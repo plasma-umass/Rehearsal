@@ -33,4 +33,7 @@ object Settings {
 
   val assumedDirs = (Seq("/", modelRoot) ++ assumedDirsRaw).map(_.toPath)
 
+  val z3Path = conf.string("z3-path").getOrElse(throw ConfigError("z3-path must be a string"))
+  val datalogPath = conf.string("datalog-path").getOrElse(throw ConfigError("datalog-path must be a string"))
+
 }

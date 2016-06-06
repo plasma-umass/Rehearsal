@@ -16,6 +16,7 @@ import java.nio.file.Paths
 import FSSyntax._
 import rehearsal.Implicits._
 import rehearsal.PuppetSyntax.ResourceGraph
+import smtlib.interpreters.Z3Interpreter
 
 import scalax.collection.Graph
 import scalax.collection.GraphEdge.DiEdge
@@ -53,7 +54,8 @@ class SymbolicEvaluatorImpl(allPaths: List[Path],
     logger.debug(s"$p is read-only")
   }
 
-  val smt = SMT()
+  val smt = new SMT(new Z3Interpreter(Settings.z3Path, Array("-in", "-smt2")))
+
   import smt.eval
 
   eval(DeclareSort(SSymbol("hash"), 0))

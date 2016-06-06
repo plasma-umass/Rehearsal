@@ -28,9 +28,9 @@ object Datalog {
   /** Starts much faster than {@code RacketDatalog}. Available at
     * https://sourceforge.net/projects/datalog/.
     */
-  object MitreDatalog extends DatalogImpl {
+  class MitreDatalog(path: String) extends DatalogImpl {
     def eval(assertions: List[Assertion]): List[Fact] = {
-      val pb = new ProcessBuilder("./datalog")
+      val pb = new ProcessBuilder(path)
       pb.redirectInput(ProcessBuilder.Redirect.PIPE)
       pb.redirectOutput(ProcessBuilder.Redirect.PIPE)
       pb.redirectErrorStream(true);
@@ -171,7 +171,7 @@ object Datalog {
     }
 
     def eval(): List[Fact] = {
-      val impl: DatalogImpl = MitreDatalog
+      val impl: DatalogImpl = new MitreDatalog(Settings.datalogPath)
       impl.eval(assertions.reverse)
     }
 
