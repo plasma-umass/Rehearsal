@@ -11,7 +11,7 @@ class SimpleEvalTests extends org.scalatest.FunSuite {
   import scalax.collection.GraphEdge._
   import scalax.collection.edge.Implicits._
 
-	for (path <- Files.newDirectoryStream(Paths.get("parser-tests/good"))) {
+	for (path <- Files.newDirectoryStream(Paths.get("Private/parser-tests/good"))) {
 
 		test(path.toString) {
 			val EvaluatedManifest(resources, deps) = PuppetParser.parseFile(path.toString).eval()

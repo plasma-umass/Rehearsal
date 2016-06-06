@@ -5,7 +5,7 @@ class SimpleParserTests extends org.scalatest.FunSuite {
   import java.nio.file.{Files, Paths}
   import scala.collection.JavaConversions._
 
-  for (path <- Files.newDirectoryStream(Paths.get("parser-tests/good"))) {
+  for (path <- Files.newDirectoryStream(Paths.get("Private/parser-tests/good"))) {
 
     test(path.toString) {
       parseFile(path.toString)
@@ -13,7 +13,7 @@ class SimpleParserTests extends org.scalatest.FunSuite {
 
   }
 
-  for (path <- Files.newDirectoryStream(Paths.get("parser-tests/bad"))) {
+  for (path <- Files.newDirectoryStream(Paths.get("Private/parser-tests/bad"))) {
 
     test(path.toString) {
       intercept[ParseError] {

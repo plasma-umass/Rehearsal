@@ -13,7 +13,7 @@ class IdempotenceEvaluationSuite extends org.scalatest.FunSuite
   import SymbolicEvaluator.{predEquals}
   import PuppetSyntax._
 
-  val root = "parser-tests/good"
+  val root = "Private/parser-tests/good"
 
   override def beforeEach() = {
     FSSyntax.clearCache()
