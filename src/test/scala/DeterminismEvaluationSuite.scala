@@ -5,7 +5,7 @@ class DeterminismEvaluationSuite extends FunSuitePlus
   import PuppetParser.parseFile
   import rehearsal.Implicits._
 
-  val root = "parser-tests/good"
+  val root = "Private/parser-tests/good"
 
   override def beforeEach() = {
     FSSyntax.clearCache()
