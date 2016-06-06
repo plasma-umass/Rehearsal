@@ -175,11 +175,10 @@ object ResourceModel {
         case true => {
           val sshDir = s"/home/$user/.ssh".toPath
           val dummyPath = s"/home/$user/.ssh/authorized_keys".toPath
-          // ite(testFileState(sshDir, IsDir), ESkip, mkdir(sshDir)) >>
-          ite(testFileState(p, IsFile), rm(p), ESkip) >>
-            createFile(p, key)
-//            ite(testFileState(dummyPath, IsFile), rm(dummyPath), ESkip) >>
-//            createFile(dummyPath, "dummy")
+          ite(testFileState(sshDir, IsDir), ESkip, mkdir(sshDir)) >>
+            ite(testFileState(p, IsFile), rm(p), ESkip) >> createFile(p, key) >>
+            ite(testFileState(dummyPath, IsFile), rm(dummyPath), ESkip) >>
+            createFile(dummyPath, "dummy")
         }
         case false => {
           ite(testFileState(p, IsFile), rm(p), ESkip)
