@@ -1,6 +1,6 @@
 name := "rehearsal"
 version := "0.1"
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 scalacOptions ++= Seq(
   "-deprecation",
   "-unchecked",
@@ -19,8 +19,8 @@ libraryDependencies ++= Seq(
   "edu.umass.cs" %% "config" % "1.0.1",
   "edu.umass.cs" %% "extras" % "1.3.0",
   "edu.umass.cs" %% "smtlib" % "1.0.1",
-  "org.scalatest" %% "scalatest" % "2.2.1" % "test",
-  "org.scalacheck" %% "scalacheck" % "1.10.1" % "test",
+  "org.scalatest" %% "scalatest" % "2.2.6" % "test",
+  "org.scalacheck" %% "scalacheck" % "1.13.0" % "test",
   "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.4",
   "com.assembla.scala-incubator" %% "graph-core" % "1.9.0",
   "com.assembla.scala-incubator" %% "graph-dot" % "1.9.0",
@@ -32,7 +32,7 @@ parallelExecution in Test := false
 
 // Logging dependencies
 libraryDependencies ++=
-  Seq("com.typesafe.scala-logging" %% "scala-logging" % "3.1.0",
+  Seq("com.typesafe.scala-logging" %% "scala-logging" % "3.4.0",
       "org.slf4j" % "slf4j-simple" % "1.7.12")
 
 testOptions in Test += Tests.Argument("-oD")
