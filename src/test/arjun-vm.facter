@@ -1,0 +1,93 @@
+architecture => amd64
+augeasversion => 1.2.0
+blockdevice_fd0_size => 0
+blockdevice_sda_model => VMware Virtual S
+blockdevice_sda_size => 21474836480
+blockdevice_sda_vendor => VMware,
+blockdevice_sr0_model => VMware IDE CDR10
+blockdevice_sr0_size => 1073741312
+blockdevice_sr0_vendor => NECVMWar
+blockdevices => fd0,sda,sr0
+domain => localdomain
+facterversion => 2.3.0
+filesystems => ext2,ext3,ext4,vfat
+fqdn => vm.localdomain
+gid => vagrant
+hardwareisa => x86_64
+hardwaremodel => x86_64
+hostname => vm
+id => vagrant
+interfaces => docker0,eth0,lo
+ipaddress => 172.17.42.1
+ipaddress_docker0 => 172.17.42.1
+ipaddress_eth0 => 192.168.255.136
+ipaddress_lo => 127.0.0.1
+is_virtual => true
+kernel => Linux
+kernelmajversion => 3.13
+kernelrelease => 3.13.0-24-generic
+kernelversion => 3.13.0
+lsbdistcodename => trusty
+lsbdistdescription => Ubuntu 14.04 LTS
+lsbdistid => Ubuntu
+lsbdistrelease => 14.04
+lsbmajdistrelease => 14.04
+macaddress => 56:84:7a:fe:97:99
+macaddress_docker0 => 56:84:7a:fe:97:99
+macaddress_eth0 => 00:0c:29:24:24:2d
+memoryfree => 2.84 GB
+memoryfree_mb => 2909.04
+memorysize => 2.94 GB
+memorysize_mb => 3009.94
+mtu_docker0 => 1500
+mtu_eth0 => 1500
+mtu_lo => 65536
+netmask => 255.255.0.0
+netmask_docker0 => 255.255.0.0
+netmask_eth0 => 255.255.255.0
+netmask_lo => 255.0.0.0
+network_docker0 => 172.17.0.0
+network_eth0 => 192.168.255.0
+network_lo => 127.0.0.0
+operatingsystem => Ubuntu
+operatingsystemmajrelease => 14.04
+operatingsystemrelease => 14.04
+os => {"name"=>"Ubuntu", "family"=>"Debian", "release"=>{"major"=>"14.04", "full"=>"14.04"}, "lsb"=>{"distcodename"=>"trusty", "distid"=>"Ubuntu", "distdescription"=>"Ubuntu 14.04 LTS", "distrelease"=>"14.04", "majdistrelease"=>"14.04"}}
+osfamily => Debian
+partitions => {"sda1"=>{"uuid"=>"110d8d8d-17f0-4567-b644-14e101fd0638", "size"=>"497664", "mount"=>"/boot"}, "sda2"=>{"size"=>"2"}, "sda5"=>{"size"=>"41439232"}}
+path => /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+physicalprocessorcount => 2
+processor0 => Intel(R) Core(TM) i5-4250U CPU @ 1.30GHz
+processor1 => Intel(R) Core(TM) i5-4250U CPU @ 1.30GHz
+processorcount => 2
+processors => {"models"=>["Intel(R) Core(TM) i5-4250U CPU @ 1.30GHz", "Intel(R) Core(TM) i5-4250U CPU @ 1.30GHz"], "count"=>2, "physicalcount"=>2}
+ps => ps -ef
+puppetversion => 3.7.1
+rubyplatform => x86_64-linux
+rubysitedir => /usr/local/lib/site_ruby/1.9.1
+rubyversion => 1.9.3
+selinux => false
+sshdsakey => AAAAB3NzaC1kc3MAAACBAJxVU7NnhNYSb8qjrDZJLh15vw2kvfzohbWa35eyDRHEY84llBPThY1u93TGzZse7tEAkfJ4/BWa8PDcRg0TXhRCO1dnjAFph2oeDJMKvYHIdfqY+OEY65cVh2kHJyjZOQZnK3hdYIyaJcCNW6Q7ZORaUaYiUBwNZeaAXg7G+NfpAAAAFQCqXd4E539Sn8uV1/3FYqNR0NLciwAAAIB/yTti8fJML3n1nyq0tTRWHsNrTa2oFzNH88gGDsK2YZnMz8HB372X3JVaUJkV2e7XewiAJ7Nk51kvUgx2zHOiEjdO6F27i4VjJI3X3hS19IaLiqNhua7BVU8R1xj2H/p8Ri1S6FeeWir1ib2S3RF6A36UsKjReO0A0Bv3FijnVAAAAIBQdEqK0bk9p424ljhoulXosyH8r+18ivv6juV8ZNwDt7F7yc2UsvHL2YLbgDs0pMX+Pke5osCeh6NGgdJmu+SJVHvtkNNRJ5CAabOFIoiT3m6B6lFqU7pk62K/xxlfuKJmJoco8gx3zq9xDjoRUlUcrvW+zQDPapl1noWtcROkFA==
+sshecdsakey => AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPQwMy8Wy8PwXD7arGdZax0L3wyfRYZNtKkx8BKeB6Dhsw0WQ8D01IkhpYqll95fwUW5G7+zqUuctH7GJp06Eg8=
+sshed25519key => AAAAC3NzaC1lZDI1NTE5AAAAIHKw/nYGNRf5HmeuLo2L6buqhp9aE98PCGGtjOxqFtEh
+sshfp_dsa => SSHFP 2 1 2972a470bc894218fff5593fbc763893892bd0a4
+SSHFP 2 2 520a6481eaca0df3bcb4a1f29634276c485d08c2c67c470c2660483c36b8bb0a
+sshfp_ecdsa => SSHFP 3 1 d45bac8d2f968b79ec5a16cc75481202fd514a04
+SSHFP 3 2 7d44ce058640176c96fbc912f2e8ad0b4bd6cb627a2c0276f8221a0ca634dd01
+sshfp_ed25519 => SSHFP 4 1 4b4ba7f557cbf98f46994a727d143d94ba95d961
+SSHFP 4 2 2db5a3fba468288870232c967d6c64d6bc905afe11375458044421538271363d
+sshfp_rsa => SSHFP 1 1 1fda8a0683064c9922b364e72eb1793b40f8957d
+SSHFP 1 2 527182adfbc691b0358168ee90574ba4e66fe81111f371265cfb07ac6a2a8625
+sshrsakey => AAAAB3NzaC1yc2EAAAADAQABAAABAQC+vb3/X63Q4DXEjO3L9PDk9U1qG1mp4M4RbmReGwdUdRVzBkkb/BHcF24Narhb5fUGB0vxZl5XVehhP31h55+LaH2N3MA7LBojJI1+wINQrgvQXBn4PjMXEhjOfh3plNDf0e3qRwSt9hzOj9Xis/1D9pqhaL+AuxYSBLav9Rj6e+NhCOTgKcIEqcydZaG7NeT9Pehp6M68qIvFOjl0rrXeHMrnZFe0V3BK0X7h4/VVvlNLvGmbbqOV+PsziXzugUwa5DF2U16VqNEZ1ala0XmiBTvI4I4wJOL2zw4QnB+XdT34jA213snDQf0fooZm93wtLZXoVaZuNQ3Uwbz4XHQh
+swapfree => 512.00 MB
+swapfree_mb => 512.00
+swapsize => 512.00 MB
+swapsize_mb => 512.00
+system_uptime => {"seconds"=>573, "hours"=>0, "days"=>0, "uptime"=>"0:09 hours"}
+timezone => PST
+uniqueid => 007f0100
+uptime => 0:09 hours
+uptime_days => 0
+uptime_hours => 0
+uptime_seconds => 573
+virtual => vmware
