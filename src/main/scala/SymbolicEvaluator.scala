@@ -347,6 +347,7 @@ class SymbolicEvaluatorImpl(allPaths: List[Path],
         None
       }
       case (path1, out1Expr, out1St) :: rest => {
+        logger.info(s"${rest.length + 1} leaf nodes.")
         val isDet = smt.pushPop {
           eval(Assert(rest.map(out2 => !stEquals(out1St, out2._3)).or()))
           val nondet = smt.checkSat()
