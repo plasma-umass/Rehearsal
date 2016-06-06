@@ -68,10 +68,13 @@ object FSSyntax {
 
   sealed abstract trait Expr {
     def pretty(): String = Pretty.pretty(this)
+
     def commutesWith(other: Expr) = commutativityCache.get((this, other)) match {
       case Some(r) => r
       case None => {
-        val r = this.fileSets.commutesWith(other.fileSets)
+        val e1 = this
+        val e2 = other
+        val r = e1.fileSets.commutesWith(e2.fileSets) || ((e1 >> e2).equivalentTo(e2 >> e1))
         commutativityCache += (this, other) -> r
         r
       }
