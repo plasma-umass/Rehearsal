@@ -28,3 +28,24 @@ function onSubmit(_) {
 document.getElementById("submit").addEventListener("click", onSubmit);
 
 submitBtn.click(onSubmit);
+
+var examples = [
+  { label: "Missing dependency", url: "../examples.apache.pp" }
+];
+
+var examplesDiv = $("#examples");
+
+
+function showExample(arg) {
+  var elt = $("<a href=\"#\"></a>").text(arg.label);
+  $(elt).click(function() {
+    $.ajax({
+      url: arg.url,
+      success: function(reply) {
+        $("#code").val(reply);
+      }
+    });
+  });
+}
+
+$.each(examples, showExample);
