@@ -30,7 +30,7 @@ document.getElementById("submit").addEventListener("click", onSubmit);
 submitBtn.click(onSubmit);
 
 var examples = [
-  { label: "Apache", url: "../examples/apache.pp" }
+  { label: "Apache", url: "../examples/apache.pp" },
   { label: "Accounts", url: "../examples/accounts.pp" },
   { label: "Hosts", url: "../examples/hosts.pp" },
   { label: "Delete Source", url: "../examples/idem.pp" }
