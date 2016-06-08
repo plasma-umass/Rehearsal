@@ -10,10 +10,43 @@ Welcome to Rehearsal.
 
 <body>
 
+<div class="container">
+
+<h1>What is Puppet?</h1>
+
+<p><a href="https://puppet.com">Puppet</a> is a domain-specific language for
+describing system configurations and a client-server runtime system that
+implements Puppet configurations (known as manifests) on machines.
+To a first approximation, a manifest specifies a collection of resources, their
+desired state, and their inter-dependencies. Puppet has several abstractions
+that allow you to write clean, modular manifests. In addition, there are
+thousands of community-supported modules available on <a
+href="https://forge.puppet.com">Puppet Forge</a> that can be easily integrated
+into a system configuration.</p>
+
+<h1>What is Rehearsal?</h1>
+
+<p>The Puppet runtime implements some basic checks on manifests, but they
+only prevent a small range of errors. Several things can go wrong when
+a manifest is actually deployed. <b>Rehearsal</b> is a static verification tool
+for Puppet. It uses a model of the file-system state and Puppet's
+semantics to verify that manifests don't violate safety properties.</p>
+
+<p>The tool demoed on this website can verify that a manifest is
+<i>deterministic</i> and <i>idempotent</i>, which are two basic properties that
+all manifests should have. It is also straightforward to check custom post-
+conditions, if desired. To learn more about Rehearsal, we encourage you to <a
+href="https://people.cs.umass.edu/~arjun//papers/2016-rehearsal.html">read the
+technical paper</a>.</p>
+
+<h1>Demo</h1>
+
 <textarea class="form-control" rows="30"id="code">
 # Paste a Puppet module here
 </textarea>
 
 <button class="btn btn-primary" id="submit">Run Rehearsal</button>
+
+</div>
 
 <script src="frontend.js"></script>
