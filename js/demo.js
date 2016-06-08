@@ -50,6 +50,7 @@ function showExample(arg) {
     });
   });
   examplesDiv.append(elt);
+  examplesDiv.append($("<br>"));
 }
 
 for (var i = 0; i < examples.length; i++) {
