@@ -2,7 +2,10 @@
 
 var editor = ace.edit("code");
 editor.setTheme("ace/theme/monokai");
-editor.getSession().setMode("ace/mode/puppet");
+editor.setOptions({
+    minLines: 10,
+    maxLines: 25
+});
 
 var submitBtn = $("#submit");
 var outputArea = $("#output");
@@ -41,7 +44,6 @@ var examples = [
 ];
 
 var examplesDiv = $("#examples");
-
 
 function showExample(arg) {
   var elt = $("<a href=\"#\"></a>").text(arg.label);
