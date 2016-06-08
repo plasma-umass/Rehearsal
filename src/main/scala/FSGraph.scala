@@ -30,6 +30,19 @@ case class ExecTree(commutingGroup: List[(FSGraph.Key, FSSyntax.Expr)],
     }
   }
 
+  def isDeterDiagnostic()  = {
+    val e = this.exprs()
+    val sets = e.fileSets
+    val ro = sets.reads
+    val symb = new SymbolicEvaluatorImpl(e.paths.toList, e.hashes, ro)
+    try {
+      symb.isDeterDiagnostic(this)
+    }
+    finally {
+      symb.free()
+    }
+  }
+
   def isDeterError(): Boolean = {
     val e = this.exprs()
     val sets = e.fileSets

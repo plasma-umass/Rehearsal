@@ -100,21 +100,25 @@ object Main extends App {
       .eval.resourceGraph.fsGraph(os)) match {
       case Success(g) => {
         print("Checking if manifest is deterministic ... ")
-        if (g.pruneWrites().toExecTree().isDeterministic()) {
-          println("OK.")
-        }
-        else {
-          println("FAILED.")
-          return
-        }
-
-        print("Checking if manifest is idempotent ... ")
-        if (g.expr.isIdempotent) {
-          println("OK.")
-        }
-        else {
-          println("FAILED.")
-          return
+        g.pruneWrites().toExecTree().isDeterDiagnostic() match {
+          case None => {
+            println("no errors found.")
+            print("Checking if manifest is idempotent ... ")
+            if (g.expr.isIdempotent) {
+              println("OK.")
+            }
+            else {
+              println("FAILED.")
+              return
+            }
+          }
+          case Some(edges) => {
+            println("FAILED.")
+            println("These dependencies may be missing:")
+            for ((src, dst) <- edges) {
+              println(s"$src -> $dst")
+            }
+          }
         }
       }
       case Failure(ParseError(msg)) => {
