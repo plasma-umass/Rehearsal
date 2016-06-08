@@ -33,7 +33,7 @@ var examples = [
   { label: "Apache", url: "../examples/apache.pp" }
   { label: "Accounts", url: "../examples/accounts.pp" },
   { label: "Hosts", url: "../examples/hosts.pp" },
-  { label: "Delete Source", url: "../examples/idem.pp" },
+  { label: "Delete Source", url: "../examples/idem.pp" }
 ];
 
 var examplesDiv = $("#examples");
