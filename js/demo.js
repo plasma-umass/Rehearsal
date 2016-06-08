@@ -5,7 +5,7 @@ var outputArea = $("#output");
 
 function onSubmit(_) {
   submitBtn.prop("disabled", true);
-
+  outputArea.hide();
   var data = { manifest: $("#code").val(), os: "ubuntu-trusty" }
 
   $.ajax({
@@ -42,6 +42,7 @@ var examplesDiv = $("#examples");
 function showExample(arg) {
   var elt = $("<a href=\"#\"></a>").text(arg.label);
   $(elt).click(function() {
+    outputArea.hide();
     $.ajax({
       url: arg.url,
       success: function(reply) {
