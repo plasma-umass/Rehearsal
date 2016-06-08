@@ -2,7 +2,7 @@
 
 var submitBtn = $("submit");
 var code = document.getElementById("code");
-var outputArea = $("output-area");
+var outputArea = $("output");
 
 function onSubmit(_) {
   submitBtn.prop("disabled", true);
