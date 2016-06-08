@@ -1,5 +1,7 @@
 package rehearsal
 
+import scala.util.parsing.input.Positional
+
 object FSSyntax {
 
   sealed trait FileState extends Ordered[FileState] {
@@ -10,6 +12,7 @@ object FSSyntax {
         case IsDir => 1
         case DoesNotExist => 2
         case IsEmptyDir => 3
+        case fileContains(c) => 4 + c.hashCode
       }
       val x = toInt(this).compare(toInt(that))
       if (x > 0) 1 else if (x < 0) -1 else 0
@@ -21,12 +24,22 @@ object FSSyntax {
   case object IsDir extends FileState
   case object IsEmptyDir extends FileState
   case object DoesNotExist extends FileState
+  case class fileContains(content: String) extends FileState
 
-  sealed trait Pred {
+  sealed trait Pred extends Positional{
     def size = Helpers.predSize(this)
-    override def toString(): String = Pretty.prettyPred(Pretty.NotCxt, this)
 
     lazy val readSet = Commutativity.predReadSet(this)
+
+
+    def hashes: Set[String] = this match {
+      case PTrue | PFalse => Set()
+      case PAnd(a,b)  => a.hashes union b.hashes
+      case POr(a,b) => a.hashes union b.hashes
+      case PNot(p) => p.hashes
+      case PTestFileState(_, fileContains(c)) => Set(c)
+      case PTestFileState(_,_) => Set()
+    }
 
     def &&(b: Pred): Pred = (this, b) match {
       case (PTrue, _) => b
@@ -102,6 +115,15 @@ object FSSyntax {
     def isIdempotent(): Boolean = {
       val impl = new SymbolicEvaluatorImpl(this.paths.toList, this.hashes, Set())
       val r = impl.isIdempotent(this)
+      impl.smt.free()
+      r
+    }
+
+    def isPredicateTrue(pred: Pred): Boolean = {
+      import PredParser._
+      val impl = new SymbolicEvaluatorImpl(this.paths.toList union pred.readSet.toList,
+        this.hashes union pred.hashes, Set())
+      val r = impl.isPredicateTrue(pred,this)
       impl.smt.free()
       r
     }

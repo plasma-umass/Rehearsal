@@ -1,5 +1,7 @@
 package rehearsal
 
+import scopt.OptionDef
+
 object Main extends App {
 
   import edu.umass.cs.extras.Implicits._
@@ -86,13 +88,18 @@ object Main extends App {
   def checker(config: Config): Unit = {
     val os = config.string("os")
     val filename = config.string("filename").toPath
+    val predicate = Try(config.string("predicate")) match {
+      case Success(s) => if(s.trim.size > 0) Some(s) else None
+      case Failure(_) => None
+    }
+
     if (!Set("ubuntu-trusty", "centos-6").contains(os)) {
       println("""Error: supported operating systems are 'ubuntu-trusty' and 'centos-6'""")
       return
     }
 
     if (!Files.isRegularFile(filename) || !Files.isReadable(filename)) {
-      println("Error: not a readable file: $filename")
+      println(s"Error: not a readable file: $filename")
       return
     }
 
@@ -103,14 +110,28 @@ object Main extends App {
         g.pruneWrites().toExecTree().isDeterDiagnostic() match {
           case None => {
             println("no errors found.")
+            val deterExpr = g.expr()
             print("Checking if manifest is idempotent ... ")
-            if (g.expr.isIdempotent) {
+            if (deterExpr.isIdempotent) {
               println("OK.")
             }
             else {
               println("FAILED.")
               return
             }
+            if(predicate.isDefined){
+              Try(PredParser.parse(predicate.get)) match {
+                case Success(p) => {
+                  print("Checking if the given predicate holds ...")
+                  if(deterExpr.isPredicateTrue(p)) println("OK")
+                  else println("FAILED")
+                }
+                case Failure(msg) => println(s"Error parsing the predicate: $msg")
+              }
+
+
+            }
+
           }
           case Some(edges) => {
             println("FAILED.")
@@ -138,8 +159,13 @@ object Main extends App {
 
   val parser = new scopt.OptionParser[Config]("rehearsal") {
 
-    def string(name: String) = {
+    def string(name: String): OptionDef[String, Config] = {
       opt[String](name).required
+        .action((x, c)  => c.copy(string = c.string + (name -> x)))
+    }
+
+    def optString(name: String) = {
+      opt[String](name).unbounded.optional
         .action((x, c)  => c.copy(string = c.string + (name -> x)))
     }
 
@@ -158,7 +184,7 @@ object Main extends App {
     cmd("check")
         .action((_, c) => c.copy(command = checker))
         .text("Check a Puppet manifest for errors.")
-        .children(string("filename"), string("os"))
+        .children(string("filename"), string("os"), optString("predicate"))
 
     cmd("benchmark-pruning-size")
       .action((_, c) => c.copy(command = pruningSizeBenchmark))

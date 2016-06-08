@@ -20,6 +20,11 @@ object FSEvaluator {
     case _ => false
   }
 
+  def fileContains(st: State, p: Path, content: String): Boolean = st.get(p) match {
+    case Some(FFile(c)) => c equals content
+    case _ => false
+  }
+
   def isEmptyDir(st: State, p: Path) = {
     !st.toSeq.exists({ case (p1, s) => p1.startsWith(p) && p1 != p })
   }
@@ -34,6 +39,7 @@ object FSEvaluator {
     case PTestFileState(p, IsDir) => isDir(st, p)
     case PTestFileState(p, DoesNotExist) => doesNotExist(st, p)
     case PTestFileState(p, IsEmptyDir) => st.keys.exists(_.getParent == p)
+    case PTestFileState(p, fileContains(c)) => isFile(st,p) && fileContains(st,p,c)
   }
 
   def eval(st: State, expr: Expr): S = expr match {

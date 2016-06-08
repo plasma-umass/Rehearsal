@@ -2,7 +2,7 @@ package rehearsal
 
 import edu.umass.cs.extras.Implicits._
 import FSEvaluator._
-import smtlib.theories.Core.{BoolSort, Equals}
+import smtlib.theories.Core._
 import edu.umass.cs.smtlib._
 import smtlib._
 import parser._
@@ -34,6 +34,13 @@ object SymbolicEvaluator {
 
 case class ST(isErr: Term, paths: Map[Path, Term])
 
+/**
+  Implementation of a symbolic evaluator.
+  @param allPaths A List of paths occuring in the expression.
+  @param hashes A Set of all the strings that occur in the expression
+  @param readOnlyPaths A Set of all the paths that are readOnly
+
+ */
 class SymbolicEvaluatorImpl(allPaths: List[Path],
                             hashes: Set[String],
                             readOnlyPaths: Set[Path]
@@ -97,7 +104,7 @@ class SymbolicEvaluatorImpl(allPaths: List[Path],
   }
   val initState = freshST()
 
-  val reverseMap = initState.paths.map(x => (x._2.asInstanceOf[QualifiedIdentifier].id.symbol.name, x._1))
+  val reverseMap: Map[String, Path] = initState.paths.map(x => (x._2.asInstanceOf[QualifiedIdentifier].id.symbol.name, x._1))
   val reverseHash = hashToZ3.map(x => (x._2.asInstanceOf[QualifiedIdentifier].id.symbol.name, x._1))
 
   // Ensures that all paths in st form a proper directory tree. If we assert
@@ -155,6 +162,13 @@ class SymbolicEvaluatorImpl(allPaths: List[Path],
     case PTestFileState(p, DoesNotExist) => Equals(st.paths(p), "DoesNotExist".id)
     case PTestFileState(p, IsFile) =>
       FunctionApplication("is-IsFile".id, Seq(st.paths(p)))
+    case PTestFileState(p, fileContains(c))  => {
+      val fileExists = evalPred(st,PTestFileState(p, IsFile))
+      val fileContains = Equals(FunctionApplication("hash".id, Seq(st.paths(p))),hashToZ3(c))
+      val pred = And(fileExists, fileContains)
+     // println(pred)
+      pred
+    }
   }
 
   def predEquals(a: Pred, b: Pred): Boolean = smt.pushPop {
@@ -253,7 +267,7 @@ class SymbolicEvaluatorImpl(allPaths: List[Path],
         val (paths, terms) = st.paths.toList.unzip
         val pathVals = smt.getValue(terms).map(_._2)
         // Filtering out the Nones with .flatten
-        Some(paths.zip(pathVals).map({ case (path, t) => fstateFromTerm(t).map(f => path -> f) }).flatten.toMap)
+        Some(paths.zip(pathVals).flatMap { case (path, t) => fstateFromTerm(t).map(f => path -> f) }.toMap)
       }
       case _ => throw Unexpected("unexpected value for isErr")
     }
@@ -297,12 +311,31 @@ class SymbolicEvaluatorImpl(allPaths: List[Path],
     val twice = evalExpr(once, e)
     eval(Assert(!stEquals(once, twice)))
     if (smt.checkSat) {
-      eval(GetModel())
+      //println(eval(GetModel()))
       false
     }
     else {
       true
     }
+  }
+
+  def isPredicateTrue(p: Pred, e: Expr): Boolean = smt.pushPop {
+    val in: ST = freshST()
+    val out: ST = evalExpr(in, e)
+
+    val pForm = evalPred(out, p)
+    val inNotErr = Not(in.isErr)
+    val outNotErr = Not(out.isErr)
+
+    eval(Assert(Not(pForm)))
+    eval(Assert(inNotErr))
+    eval(Assert(outNotErr))
+
+    if(smt.checkSat){
+      //println(eval(GetModel()))
+      false
+    }
+    else true
   }
 
   def isIdempotent(g: FSGraph): Boolean = smt.pushPop {

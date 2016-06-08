@@ -8,7 +8,7 @@ class SymbolicEvaluatorTests extends FunSuitePlus {
   import scalax.collection.GraphEdge.DiEdge
   import rehearsal.Implicits._
   import java.nio.file.Paths
-  import SymbolicEvaluator.{predEquals}
+  import SymbolicEvaluator.predEquals
 
   def comprehensiveIsDet(original: FSGraph): Boolean = {
     val pruned = original.pruneWrites().toExecTree().isDeterministic()

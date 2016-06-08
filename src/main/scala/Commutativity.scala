@@ -147,6 +147,9 @@ object Commutativity {
 
   def absState(e: Expr) = evalExpr(St.empty, e)
 
+  /**
+    @return a set of all paths occuring in the predicate
+   */
   def predReadSet(pred: Pred): Set[Path] = pred match {
     case PTrue | PFalse => Set()
     case PAnd(a, b) => a.readSet ++ b.readSet

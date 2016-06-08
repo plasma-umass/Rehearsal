@@ -36,117 +36,118 @@ class IdempotenceEvaluationSuite extends org.scalatest.FunSuite
 
   test("thias-bind.pp") {
     assert(parseFile(s"$root/thias-bind.pp").eval.resourceGraph
-            .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+            .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("thias-bind.pp pruned") {
     assert(parseFile(s"$root/thias-bind.pp").eval.resourceGraph
-      .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+      .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("puppet-hosting_deter.pp") {
     assert(parseFile(s"$root/puppet-hosting_deter.pp").eval.resourceGraph
-            .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+            .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("puppet-hosting_deter.pp pruned") {
     assert(parseFile(s"$root/puppet-hosting_deter.pp").eval.resourceGraph
-      .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+      .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("antonlindstrom-powerdns_deter.pp") {
     assert(parseFile(s"$root/antonlindstrom-powerdns_deter.pp").eval.resourceGraph
-            .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+            .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("antonlindstrom-powerdns_deter.pp pruned") {
     assert(parseFile(s"$root/antonlindstrom-powerdns_deter.pp").eval.resourceGraph
-      .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+      .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("spiky-reduced-deterministic.pp") {
     assert(parseFile(s"$root/spiky-reduced-deterministic.pp").eval.resourceGraph
-            .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+            .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("spiky-reduced-deterministic.pp pruned") {
     assert(parseFile(s"$root/spiky-reduced-deterministic.pp").eval.resourceGraph
-      .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+      .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("ghoneycutt-xinetd_deter.pp") {
     assert(parseFile(s"$root/ghoneycutt-xinetd_deter.pp").eval.resourceGraph
-            .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+            .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("ghoneycutt-xinetd_deter.pp pruned") {
     assert(parseFile(s"$root/ghoneycutt-xinetd_deter.pp").eval.resourceGraph
-      .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+      .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("mjhas-amavis.pp") {
     assert(parseFile(s"$root/mjhas-amavis.pp").eval.resourceGraph
-            .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+            .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("mjhas-amavis.pp pruned") {
     assert(parseFile(s"$root/mjhas-amavis.pp").eval.resourceGraph
-      .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+      .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
+  +
   test("mjhas-clamav.pp") {
     assert(parseFile(s"$root/mjhas-clamav.pp").eval.resourceGraph
-            .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+            .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("mjhas-clamav.pp pruned") {
     assert(parseFile(s"$root/mjhas-clamav.pp").eval.resourceGraph
-      .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+      .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("Nelmo-logstash_deter.pp") {
     assert(parseFile(s"$root/Nelmo-logstash_deter.pp").eval.resourceGraph
-            .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+            .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("Nelmo-logstash_deter.pp pruned") {
     assert(parseFile(s"$root/Nelmo-logstash_deter.pp").eval.resourceGraph
-      .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+      .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("pdurbin-java-jpa-tutorial.pp pruned") {
     assert(parseFile(s"$root/pdurbin-java-jpa-tutorial.pp").eval.resourceGraph
-            .fsGraph("centos-6").expr().isIdempotent() == true)
+            .fsGraph("centos-6").expr().isIdempotent())
   }
 
   test("thias-ntp_deter.pp") {
     assert(parseFile(s"$root/thias-ntp_deter.pp").eval.resourceGraph
-            .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+            .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("thias-ntp_deter.pp pruned") {
     assert(parseFile(s"$root/thias-ntp_deter.pp").eval.resourceGraph
-            .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+            .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("xdrum-rsyslog_deter.pp") {
     assert(parseFile(s"$root/xdrum-rsyslog_deter.pp").eval.resourceGraph
-            .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+            .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("xdrum-rsyslog_deter.pp pruned") {
     assert(parseFile(s"$root/xdrum-rsyslog_deter.pp").eval.resourceGraph
-            .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+            .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("BenoitCattie-puppet-nginx.pp") {
     assert(parseFile(s"$root/BenoitCattie-puppet-nginx.pp").eval.resourceGraph
-            .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+            .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("BenoitCattie-puppet-nginx.pp pruned") {
     assert(parseFile(s"$root/BenoitCattie-puppet-nginx.pp").eval.resourceGraph
-            .fsGraph("ubuntu-trusty").expr().isIdempotent() == true)
+            .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
   test("ssh_authorized_keys should be idempotent (regression)") {
