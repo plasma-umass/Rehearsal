@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<div class="row">
+
+<div class="col-md-3">
+
+<p>This online demo lets you apply Rehearal to a Puppet manifest. We've
+provided several small manifests below that illustrate the kinds of
+bugs that Rehearsal can catch.
+</p>
+
+</div>
+
+<div class="col-md-6">
+
+<h1>Demo</h1>
+
+<textarea class="form-control" rows="30"id="code">
+# Paste a Puppet module here
+</textarea>
+
+<button class="btn btn-primary" id="submit">Run Rehearsal</button>
+
+</div>
+
+<div class="col-md-3">
+
+<h3>Limitations</h3>
+
+<p>The main limitation of Rehearsal is that it does not support manifests with
+embedded shell scripts (the <code>exec</code> resource type). Rehearsal supports
+several common built-in resource types, but some platform specific types
+are not supported. (In particular, resources that depend on Mac OS X and Windows
+are not supported.) For more details on its limitations and our future work,
+see the <a
+href="https://people.cs.umass.edu/~arjun//papers/2016-rehearsal.html">paper</a>.
+</div>
+
+</div>
+
+<script src="frontend.js"></script>
