@@ -6,7 +6,7 @@ var outputArea = $("#output");
 function onSubmit(_) {
   submitBtn.prop("disabled", true);
   outputArea.hide();
-  var data = { manifest: $("#code").val(), os: "ubuntu-trusty" }
+  var data = { manifest: $("#code").val(), os: $("#os").val() }
 
   $.ajax({
     url: "http://104.196.37.39:5000/rehearsal",
