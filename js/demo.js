@@ -1,12 +1,16 @@
 "use strict";
 
+var editor = ace.edit("code");
+editor.setTheme("ace/theme/monokai");
+editor.getSession().setMode("ace/mode/puppet");
+
 var submitBtn = $("#submit");
 var outputArea = $("#output");
 
 function onSubmit(_) {
   submitBtn.prop("disabled", true);
   outputArea.hide();
-  var data = { manifest: $("#code").val(), os: $("#os").val() }
+  var data = { manifest: editor.getValue(), os: $("#os").val() }
 
   $.ajax({
     url: "http://104.196.37.39:5000/rehearsal",
@@ -46,7 +50,7 @@ function showExample(arg) {
     $.ajax({
       url: arg.url,
       success: function(reply) {
-        $("#code").val(reply);
+        editor.setValue(reply, 0);
       }
     });
   });
