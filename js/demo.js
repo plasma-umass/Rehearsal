@@ -18,7 +18,7 @@ function onSubmit(_) {
     success: function(reply) {
       outputArea.text(reply);
     },
-    error: function(_, text, _) {
+    error: function(_, text) {
       outputArea.text(text);
     }
   });
