@@ -37,7 +37,6 @@ var examplesDiv = $("#examples");
 
 
 function showExample(arg) {
-  console.log(arg);
   var elt = $("<a href=\"#\"></a>").text(arg.label);
   $(elt).click(function() {
     $.ajax({
@@ -47,6 +46,7 @@ function showExample(arg) {
       }
     });
   });
+  examplesDiv.append(elt);
 }
 
 for (var i = 0; i < examples.length; i++) {
