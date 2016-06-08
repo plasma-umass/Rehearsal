@@ -49,4 +49,4 @@ function showExample(arg) {
   });
 }
 
-$.each(examples, showExample);
+$(examples).each(showExample);
