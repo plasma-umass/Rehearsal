@@ -15,9 +15,11 @@ function onSubmit(_) {
     data: JSON.stringify(data),
     complete: function() { submitBtn.prop("disabled", false); },
     success: function(reply) {
+      outputArea.show();
       outputArea.text(reply);
     },
     error: function(_, text) {
+      outputArea.show();
       outputArea.text(text);
     }
   });
