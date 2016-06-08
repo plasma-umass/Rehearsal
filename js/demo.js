@@ -50,5 +50,5 @@ function showExample(arg) {
 }
 
 for (var i = 0; i < examples.length; i++) {
-  showExamples(examples[i]);
+  showExample(examples[i]);
 }
