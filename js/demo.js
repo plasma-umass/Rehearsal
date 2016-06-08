@@ -30,7 +30,7 @@ document.getElementById("submit").addEventListener("click", onSubmit);
 submitBtn.click(onSubmit);
 
 var examples = [
-  { label: "Missing dependency", url: "../examples.apache.pp" }
+  { label: "Missing dependency", url: "../examples/apache.pp" }
 ];
 
 var examplesDiv = $("#examples");
