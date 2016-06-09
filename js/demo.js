@@ -40,7 +40,10 @@ var examples = [
   { label: "Apache", url: "../examples/apache.pp" },
   { label: "Accounts", url: "../examples/accounts.pp" },
   { label: "Hosts", url: "../examples/hosts.pp" },
-  { label: "Delete Source", url: "../examples/idem.pp" }
+  { label: "Delete Source", url: "../examples/idem.pp" },
+  { label: "SSH Keys", url: "../examples/ssh.pp" },
+  { label: "SpikyIRC", url: "../examples/spikyirc.pp" },
+  { label: "Powerdns", url: "../examples/powerdns.pp" }
 ];
 
 var examplesDiv = $("#examples");
