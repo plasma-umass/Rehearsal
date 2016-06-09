@@ -13,7 +13,7 @@ var outputArea = $("#output");
 function onSubmit(_) {
   submitBtn.prop("disabled", true);
   outputArea.hide();
-  var data = { manifest: editor.getValue(), os: $("#os").val(), pred: $("#pred").getValue() }
+  var data = { manifest: editor.getValue(), os: $("#os").val(), pred: $("#pred").val() }
 
   $.ajax({
     url: "http://104.196.37.39:5000/rehearsal",
