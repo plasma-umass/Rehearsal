@@ -108,6 +108,11 @@ object PuppetSyntax extends com.typesafe.scalalogging.LazyLogging {
 
   case class Node(typ: String, title: String) extends FSGraph.Key {
     lazy val isPrimitiveType = primTypes.contains(typ)
+
+    override def toString(): String = {
+      val t = typ.head.toUpper + typ.tail
+      t + "[\"" + title + "\"]"
+    }
   }
 
   case class ResourceGraph(ress: Map[FSGraph.Key, ResourceModel.Res], deps: Graph[FSGraph.Key, DiEdge]) {
