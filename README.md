@@ -40,6 +40,13 @@ Windows, but we do not claim that it will.
 
    After installation, place the `z3` executable in your `PATH`.
 
+   **NOTE:** We've had issues the version of Z3 that is in the Ubuntu 16.04
+   repositories. We suggest downloading Z3 from the link above.
+
+3. A Datalog implementation. Rehearsal will work with
+   [John Ramsdell's Datalog](http://datalog.sourceforge.net) (version 2.5 or
+   higher). With a little more work, other implementations can be used.
+
 3. [sbt](http://www.scala-sbt.org) version 0.13.9 or higher
 
 

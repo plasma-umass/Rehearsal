@@ -12,11 +12,21 @@ gpg -a --export E084DAB9 | sudo apt-key add -
 apt-get update -q
 
 echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
-apt-get install -yq oracle-java8-installer sbt unzip r-base ghostscript
+apt-get install -yq oracle-java8-installer sbt unzip r-base ghostscript build-essential
 
 wget -q http://www.scala-lang.org/files/archive/scala-2.11.7.deb
 dpkg -i scala-2.11.7.deb
 rm scala-2.11.7.deb
+
+wget -o datalog.tar.gz https://sourceforge.net/projects/datalog/files/datalog/2.6/datalog-2.6.tar.gz/download
+tar xzf datalog.tar.gz
+cd datalog-2.6
+./configure
+make
+make install
+cd ..
+rm -rf datalog-2.6
+rm datalog.tar.gz
 EOF
 
 $userscript = <<EOF
