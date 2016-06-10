@@ -37,7 +37,10 @@ document.getElementById("submit").addEventListener("click", onSubmit);
 submitBtn.click(onSubmit);
 
 var examples = [
-  { label: "Apache", url: "../examples/apache.pp", os: "ubuntu-trusty" },
+  { label: "Apache",
+    url: "../examples/apache.pp",
+    os: "ubuntu-trusty"
+  },
   { label: "Accounts", url: "../examples/accounts.pp", os: "ubuntu-trusty" },
   { label: "Hosts", url: "../examples/hosts.pp", os: "ubuntu-trusty" },
   { label: "Delete Source", url: "../examples/idem.pp", os: "ubuntu-trusty" },
@@ -56,6 +59,7 @@ function showExample(arg) {
       url: arg.url,
       success: function(reply) {
         $("#os").val(arg.os);
+        $("#pred").val(arg.pred || "");
         editor.setValue(reply, 0);
       }
     });
