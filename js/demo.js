@@ -3,8 +3,8 @@
 var editor = ace.edit("code");
 editor.setTheme("ace/theme/monokai");
 editor.setOptions({
-    minLines: 10,
-    maxLines: 25
+    minLines: 20,
+    maxLines: 60
 });
 
 var submitBtn = $("#submit");
