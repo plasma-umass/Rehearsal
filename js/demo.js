@@ -47,6 +47,8 @@ var examples = [
   { label: "SSH Keys", url: "../examples/ssh.pp", os: "ubuntu-trusty" },
   { label: "SpikyIRC", url: "../examples/spikyirc.pp", os: "centos-6" },
   { label: "Powerdns", url: "../examples/powerdns.pp", os: "ubuntu-trusty" }
+  { label: "Post Condition", url: "../examples/predicate.pp", os: "ubuntu-trusty",
+    pred: "fileContains?(\"/etc/hosts\",\"127.0.0.1     localhost\"" }
 ];
 
 var examplesDiv = $("#examples");
