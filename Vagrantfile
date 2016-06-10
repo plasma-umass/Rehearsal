@@ -1,4 +1,5 @@
 $script = <<EOF
+set -e
 apt-get update -q
 apt-get install -yq software-properties-common
 add-apt-repository ppa:webupd8team/java
@@ -18,7 +19,7 @@ wget -q http://www.scala-lang.org/files/archive/scala-2.11.7.deb
 dpkg -i scala-2.11.7.deb
 rm scala-2.11.7.deb
 
-wget -o datalog.tar.gz https://sourceforge.net/projects/datalog/files/datalog/2.6/datalog-2.6.tar.gz/download
+wget -O datalog.tar.gz https://sourceforge.net/projects/datalog/files/datalog/2.6/datalog-2.6.tar.gz/download
 tar xzf datalog.tar.gz
 cd datalog-2.6
 ./configure
