@@ -59,6 +59,7 @@ function showExample(arg) {
       url: arg.url,
       success: function(reply) {
         outputArea.hide();
+        $("#demo-head").val(arg.label);
         $("#os").val(arg.os);
         $("#pred").val(arg.pred || "");
         editor.setValue(reply, 0);
