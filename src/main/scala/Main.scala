@@ -122,9 +122,9 @@ object Main extends App {
             if(predicate.isDefined){
               Try(PredParser.parse(predicate.get)) match {
                 case Success(p) => {
-                  print("Checking if the given predicate holds ...")
+                  print("Checking if the given predicate holds ... ")
                   if(deterExpr.isPredicateTrue(p)) println("OK")
-                  else println("FAILED")
+                  else println("FAILED.")
                 }
                 case Failure(msg) => println(s"Error parsing the predicate: $msg")
               }
