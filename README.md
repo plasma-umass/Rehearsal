@@ -2,6 +2,8 @@
 
 # Rehearsal: A Configuration Verification Tool for Puppet
 
+See the [Rehearsal website](http://plasma-umass.github.io/Rehearsal/home/) for a demo.
+
 ## Automated Installation with Vagrant.
 
 We've provided a [Vagrantfile](https://www.vagrantup.com) that creates a
