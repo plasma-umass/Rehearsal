@@ -58,6 +58,7 @@ function showExample(arg) {
     $.ajax({
       url: arg.url,
       success: function(reply) {
+        outputArea.hide();
         $("#os").val(arg.os);
         $("#pred").val(arg.pred || "");
         editor.setValue(reply, 0);
