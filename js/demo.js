@@ -37,13 +37,13 @@ document.getElementById("submit").addEventListener("click", onSubmit);
 submitBtn.click(onSubmit);
 
 var examples = [
-  { label: "Apache", url: "../examples/apache.pp" },
-  { label: "Accounts", url: "../examples/accounts.pp" },
-  { label: "Hosts", url: "../examples/hosts.pp" },
-  { label: "Delete Source", url: "../examples/idem.pp" },
-  { label: "SSH Keys", url: "../examples/ssh.pp" },
-  { label: "SpikyIRC", url: "../examples/spikyirc.pp" },
-  { label: "Powerdns", url: "../examples/powerdns.pp" }
+  { label: "Apache", url: "../examples/apache.pp", os: "ubuntu-trusty" },
+  { label: "Accounts", url: "../examples/accounts.pp", os: "ubuntu-trusty" },
+  { label: "Hosts", url: "../examples/hosts.pp", os: "ubuntu-trusty" },
+  { label: "Delete Source", url: "../examples/idem.pp", os: "ubuntu-trusty" },
+  { label: "SSH Keys", url: "../examples/ssh.pp", os: "ubuntu-trusty" },
+  { label: "SpikyIRC", url: "../examples/spikyirc.pp", os: "centos-6" },
+  { label: "Powerdns", url: "../examples/powerdns.pp", os: "ubuntu-trusty" }
 ];
 
 var examplesDiv = $("#examples");

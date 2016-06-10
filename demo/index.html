@@ -14,9 +14,21 @@ bugs that Rehearsal can catch.
 </p>
 
 <div id="examples"></div>
+
+<h3>Limitations</h3>
+
+<p>The main limitation of Rehearsal is that it does not support manifests with
+embedded shell scripts (the <code>exec</code> resource type). Rehearsal supports
+several common built-in resource types, but some platform specific types
+are not supported. (In particular, resources that depend on Mac OS X and Windows
+are not supported.) For more details on its limitations and our future work,
+see the <a
+href="https://people.cs.umass.edu/~arjun//papers/2016-rehearsal.html">paper</a>.
+</p>
+
 </div>
 
-<div class="col-md-6">
+<div class="col-md-9">
 
 <h1>&nbsp;</h1>
 
@@ -24,7 +36,7 @@ bugs that Rehearsal can catch.
 # Paste a Puppet manifest here
 </textarea>
 
-<input placeholder="Enter postcondition" class="form-control" rows="3" id="pred" style="font-family: monospace">
+<input placeholder="Enter postcondition (optional)" class="form-control" rows="3" id="pred" style="font-family: monospace">
 
 <div class="text-right">
 <select id="os">
@@ -40,19 +52,6 @@ bugs that Rehearsal can catch.
 
 <pre id="output" style="display: none"></pre>
 
-</div>
-
-<div class="col-md-3">
-
-<h3>Limitations</h3>
-
-<p>The main limitation of Rehearsal is that it does not support manifests with
-embedded shell scripts (the <code>exec</code> resource type). Rehearsal supports
-several common built-in resource types, but some platform specific types
-are not supported. (In particular, resources that depend on Mac OS X and Windows
-are not supported.) For more details on its limitations and our future work,
-see the <a
-href="https://people.cs.umass.edu/~arjun//papers/2016-rehearsal.html">paper</a>.
 </div>
 
 </div>
