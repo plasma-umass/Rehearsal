@@ -55,6 +55,7 @@ function showExample(arg) {
     $.ajax({
       url: arg.url,
       success: function(reply) {
+        $("#os").val(arg.os);
         editor.setValue(reply, 0);
       }
     });
