@@ -1,0 +1,25 @@
+\documentclass{article}
+
+\title{A language model}
+\author{Rachit Nigam}
+\usepackage{amsmath}
+\begin{document}
+\begin{flalign*}
+  [\![e]\!]&: \sigma \rightarrow \sigma + \bot \\
+  G&: e \rightarrow 2^\sigma
+  \\[2.0ex]
+  G(error)& : \{\} \\
+  G(skip)& : \{<\!\sigma\!>\, \mid \sigma \in \Sigma \,\} \\
+  G(e_1,e_2)& : \{ <\!\sigma_1\cdots\sigma_m\sigma_k'\cdots\sigma_n'\!>\, \mid \, <\!\sigma_1\cdots\sigma_m\!>\in G(e_1),\, <\!\sigma_1'\cdots\sigma_n'\!>\in G(e_2) \}
+  \\[1.0ex]
+  G(exists?(p))& : \{ <\!\sigma\!>\, \mid \sigma \in \Sigma,\, \sigma(p) \neq none \} \\
+  G(dir?(p))& : \{ <\!\sigma\!>\, \mid \sigma \in \Sigma,\, \sigma(p) = Dir\} \\ 
+  G(file?(p))& : \{ <\!\sigma\!>\, \mid \sigma \in \Sigma,\, \exists str.\sigma(p) = File(str)\} 
+  \\[1.0ex]
+  G(mkdir(p))& : \{ <\!\sigma_1,\sigma_2\!>\, \mid \sigma_1 \in \Sigma,\, [\![\neg exists(p)]\!]\sigma_1,\, \sigma_2=\sigma_1[p \mapsto Dir] \} \\ 
+  G(creat(p/str,str'))& : \{ <\!\sigma_1,\sigma_2\!>\, \mid \sigma_1 \in \Sigma,\, [\![p/str = none \wedge p = Dir]\!]\sigma_1,\, \sigma_2=\sigma_1[p \mapsto File(str')] \} \\ 
+  G(rm(p))& : \{ <\!\sigma_1,\sigma_2\!>\, \mid \sigma_1 \in \Sigma,\, [\![\exists str.p = File(str)]\!]\sigma_1, \, \sigma_2 = \sigma_1[p \mapsto none] \}\\
+  G(cp(p_1,p_2/str))& : \{ <\!\sigma_1,\sigma_2\!>\, \mid \sigma \in \Sigma,\, [\![p_1 = File(str') \wedge p_2/str = none \wedge p_2 = Dir]\!],\, \\ 
+  &\phantom{aaaaaaaaaaaaaaaaaa} \sigma_2 = \sigma_1[p_2/str \mapsto File(str')] \} \\
+\end{flalign*}
+\end{document}
