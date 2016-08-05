@@ -1,0 +1,13 @@
+language: scala
+sudo: false
+scala:
+ - 2.11.7
+jdk: oraclejdk8
+script:
+  - ./fetch-travis-deps.sh
+  - PATH=$PATH:/home/travis/mydeps/z3/bin sbt test-only -- -oD
+cache:
+  directories:
+    - /home/travis/.ivy2
+    - /home/travis/.sbt
+    - /home/travis/mydeps
