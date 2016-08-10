@@ -1,4 +1,4 @@
-[![Build Status](https://magnum.travis-ci.com/plasma-umass/rehearsal.svg?token=qLSQpCbsY9CMXsHZVJDd)](https://magnum.travis-ci.com/plasma-umass/rehearsal)
+[![Build Status](https://travis-ci.org/plasma-umass/Rehearsal.svg?branch=master)](https://travis-ci.org/plasma-umass/Rehearsal)
 
 # Rehearsal: A Configuration Verification Tool for Puppet
 
