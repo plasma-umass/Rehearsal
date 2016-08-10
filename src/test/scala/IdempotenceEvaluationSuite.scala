@@ -94,7 +94,6 @@ class IdempotenceEvaluationSuite extends org.scalatest.FunSuite
       .fsGraph("ubuntu-trusty").expr().isIdempotent())
   }
 
-  +
   test("mjhas-clamav.pp") {
     assert(parseFile(s"$root/mjhas-clamav.pp").eval.resourceGraph
             .fsGraph("ubuntu-trusty").expr().isIdempotent())
