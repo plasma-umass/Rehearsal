@@ -33,7 +33,8 @@ object Datalog {
       val pb = new ProcessBuilder(path)
       pb.redirectInput(ProcessBuilder.Redirect.PIPE)
       pb.redirectOutput(ProcessBuilder.Redirect.PIPE)
-      pb.redirectErrorStream(true);
+      pb.redirectError(ProcessBuilder.Redirect.INHERIT)
+      pb.redirectErrorStream(false);
       val proc = pb.start()
       proc.getOutputStream().writeAllLines(assertions.map(_.toString)).close()
       // First line says "Datalog 2.5"
@@ -46,11 +47,11 @@ object Datalog {
       def stripPrompt(line: String): String = {
         line.dropWhile(ch => ch == '>' || ch == ' ')
       }
-      Parser.parseAll(Parser.facts, results.map(stripPrompt).mkString("\n")) match {
+      val r = results.map(stripPrompt).mkString("\n")
+      Parser.parseAll(Parser.facts, r) match {
         case Parser.Success(facts, _) => facts
         case Parser.NoSuccess(msg, _) => {
-          println(results)
-          throw Unexpected(msg.toString)
+          throw Unexpected(msg.toString + " output was:\n" + r)
         }
       }
     }

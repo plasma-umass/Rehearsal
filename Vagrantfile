@@ -23,6 +23,7 @@ wget -O datalog.tar.gz https://sourceforge.net/projects/datalog/files/datalog/2.
 tar xzf datalog.tar.gz
 cd datalog-2.6
 ./configure
+sed -i "s/-DHAVE_LIBREADLINE=1//g" Makefile
 make
 make install
 cd ..
