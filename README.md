@@ -53,7 +53,9 @@ Windows, but we do not claim that it will.
    library, which happens automatically if you have the readline headers installed. If so, you
    can disable readline support by running the following command after `./configure`:
    
-       sed -i "s/-DHAVE_LIBREADLINE=1//g" Makefile # This is terrible
+    ```
+    sed -i "s/-DHAVE_LIBREADLINE=1//g" Makefile # This is terrible
+    ```
 
 4. [sbt](http://www.scala-sbt.org) version 0.13.9 or higher
 
