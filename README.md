@@ -49,7 +49,13 @@ Windows, but we do not claim that it will.
    [John Ramsdell's Datalog](http://datalog.sourceforge.net) (version 2.5 or
    higher). With a little more work, other implementations can be used.
 
-3. [sbt](http://www.scala-sbt.org) version 0.13.9 or higher
+   **NOTE*: the Datalog implementation above will not work if it is linked to the readline
+   library, which happens automatically if you have the readline headers installed. If so, you
+   can disable readline support by running the following command after `./configure`:
+   
+       sed -i "s/-DHAVE_LIBREADLINE=1//g" Makefile # This is terrible
+
+4. [sbt](http://www.scala-sbt.org) version 0.13.9 or higher
 
 
 In addition, to run the benchmarks and generate graphs, you'll need to install:
