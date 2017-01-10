@@ -16,7 +16,7 @@ function onSubmit(_) {
   var data = { manifest: editor.getValue(), os: $("#os").val(), pred: $("#pred").val() }
 
   $.ajax({
-    url: "http://104.196.37.39:4999/rehearsal",
+    url: "http://23.20.114.147:4999/rehearsal",
     method: "POST",
     processData: false,
     data: JSON.stringify(data),
