@@ -1,0 +1,20 @@
+{
+  "name": "rehearsal-package-server",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "./node_modules/.bin/tsc",
+    "update": "./bin/update.sh",
+    "zip": "./bin/zip.sh"
+  },
+  "devDependencies": {
+    "@types/node": "^8.5.7",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.177.0",
+    "ibm-cos-sdk": "^1.1.1",
+    "openwhisk": "^3.11.0"
+  }
+}

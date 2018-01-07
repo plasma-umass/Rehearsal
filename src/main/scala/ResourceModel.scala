@@ -39,7 +39,7 @@ object ResourceModel {
 
   def queryPackage(distro: String, pkg: String): Option[Set[Path]] = {
     val resp = logTime(s"Fetching package listing for $pkg ($distro)") {
-      Http(s"http://${Settings.packageHost}/query/$distro/$pkg").timeout(2 * 1000, 60 * 1000).asString
+      Http(s"${Settings.packageHost}/query/$distro/$pkg").timeout(2 * 1000, 60 * 1000).asString
     }
     if (resp.isError) {
       None
