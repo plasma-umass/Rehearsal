@@ -1,11 +1,4 @@
 # From https://github.com/antonlindstrom/puppet-powerdns/tree/732fa339a15d3ea1d6fc39e806f978bc576b18ab
-#
-# Changes for Rehearsal:
-# - Replaced usage of selector syntax with if expressions.
-# - Removed params class and moved contents to top, updated references to
-#   variables accordingly. (Can be reverted once we support inheritance.)
-# - Set facter variables (operatingsystem).
-
 include powerdns
 
 $::operatingsystem = 'ubuntu'
