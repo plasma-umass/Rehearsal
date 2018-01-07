@@ -17,6 +17,7 @@ function onSubmit(_) {
 
   $.ajax({
     url: "https://openwhisk.ng.bluemix.net/api/v1/web/PLASMA_dev/default/rehearsal",
+    contentType: 'application/json',
     method: "POST",
     processData: false,
     data: JSON.stringify(data),
