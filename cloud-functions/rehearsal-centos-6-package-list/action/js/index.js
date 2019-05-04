@@ -1,6 +1,3 @@
-// This is based on:
-//
-//   https://github.com/apache/incubator-openwhisk-runtime-docker/blob/master/core/actionProxy/actionproxy.py
 var express = require('express');
 var bodyParser = require('body-parser');
 var cp = require('child_process');
@@ -8,26 +5,18 @@ var cp = require('child_process');
 var app = express();
 var jsonParser = bodyParser.json()
 
-var LOG_SENTINEL = 'XXX_THE_END_OF_A_WHISK_ACTIVATION_XXX\n';
+let port = Number(process.env.PORT);
 
-function complete() {
-  process.stdout.write(LOG_SENTINEL);
-  process.stderr.write(LOG_SENTINEL);
+if (port <= 0) {
+  throw new Error('PORT environment variable was not set.')
 }
 
-// This handler receives executable source code if an action is a ZIP file
-// based on this image. But, we are never going to do that.
-app.post('/init', function(req, resp) {
-  resp.status(200).send();
-});
-
-app.post('/run', jsonParser, function(req, resp) {
+app.post('/', jsonParser, function(req, resp) {
   var packageName = req.body.value.package;
   if (typeof packageName !== 'string') {
     resp.status(404).send(JSON.stringify({
       error: 'expected "package" parameter'
     }));
-    complete();
     return;
   }
 
@@ -43,7 +32,6 @@ app.post('/run', jsonParser, function(req, resp) {
             stderr: stderr
           }
         }));
-        complete();
         return;
       }
 
@@ -52,8 +40,7 @@ app.post('/run', jsonParser, function(req, resp) {
       resp.status(200).send(JSON.stringify({
         files: files
       }));
-      complete();
     });
 });
 
-app.listen(8080);
+app.listen(port);

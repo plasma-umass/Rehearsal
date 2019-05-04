@@ -9,7 +9,8 @@
         "noFallthroughCasesInSwitch": true,
         "strict": true,
         "noImplicitReturns": true,
-        "inlineSourceMap": true
+        "inlineSourceMap": true,
+        "esModuleInterop": true
     },
     "include": [
       "ts"
