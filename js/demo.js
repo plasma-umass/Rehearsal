@@ -16,7 +16,7 @@ function onSubmit(_) {
   var data = { manifest: editor.getValue(), os: $("#os").val(), pred: $("#pred").val() }
 
   $.ajax({
-    url: "https://openwhisk.ng.bluemix.net/api/v1/web/PLASMA_dev/default/rehearsal",
+    url: "https://rehearsal-26qzybhotq-uc.a.run.app/run",
     contentType: 'application/json',
     method: "POST",
     processData: false,
