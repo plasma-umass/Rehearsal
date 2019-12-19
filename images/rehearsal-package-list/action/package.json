@@ -1,0 +1,24 @@
+{
+  "name": "rehearsal-package-list",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "gcloud functions deploy rehearsal-package-list --entry-point=app --memory=128MB --runtime=nodejs8 --timeout=60s --trigger-http",
+    "build": "./node_modules/.bin/tsc"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.1",
+    "@types/node": "^12.0.0",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@types/morgan": "^1.7.35",
+    "@types/request": "^2.48.1",
+    "@types/request-promise-native": "^1.0.16",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7"
+  }
+}
